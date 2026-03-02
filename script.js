@@ -5,6 +5,7 @@ const confmPasswd= document.querySelector("#confmPasswd");
 const emailInput= document.querySelector("#email");
 
 
+
 f.addEventListener("submit", (e) =>{
     if(passwd.validity.valueMissing){
         passwd.setCustomValidity("Where you going?");
@@ -40,6 +41,13 @@ emailInput.addEventListener("input", (e) =>{
 });
 
 emailInput.addEventListener("change", (e) =>{
+
+    if(emailInput.validity.typeMismatch){
+        emailInput.setCustomValidity("That does not look like an email mate!!")
+    }
+    else{
+        emailInput.setCustomValidity("");
+    }
     
 
     if(!emailInput.checkValidity()){
@@ -49,3 +57,31 @@ emailInput.addEventListener("change", (e) =>{
     }
 
 });
+
+passwd.addEventListener("input", (e) =>{
+    if(passwd.validity.rangeUnderflow){
+        passwd.style.borderColor="red";
+    }
+    else{
+        passwd.style.borderColor="green";
+    }
+});
+
+confmPasswd.addEventListener("input", (e) =>{
+    if(confmPasswd.validity.rangeUnderflow){
+        confmPasswd.style.borderColor="red";
+    }
+    else{
+        confmPasswd.style.borderColor="green";
+    }
+});
+
+passwd.addEventListener("change", (e) =>{
+    if(passwd.validity.rangeUnderflow){
+        passwd.style.borderColor="red";
+    }
+    else{
+        passwd.style.borderColor="green";
+    }
+});
+
